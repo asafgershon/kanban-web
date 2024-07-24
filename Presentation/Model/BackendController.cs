@@ -169,8 +169,11 @@ namespace Presentation.Model
             for (int i = 0; i < 3; i++)
             {
                 List<TaskSL> columns = JsonSerializer.Deserialize<Response>(Service.GetColumn(userEmail, boardName, i))?.ReturnValue as List<TaskSL> ?? new List<TaskSL>();
-                string colname = JsonSerializer.Deserialize<Response>(Service.GetColumnName(userEmail, boardName, i)).ReturnValue as string ?? "no name";
-                ColumnModel columnModel = new ColumnModel(colname, i, new List<TaskModel>(), this);
+                string colname = Service.GetColumnName(userEmail, boardName, i);
+                colname = colname.Trim('{', '}');
+                string[] parts = colname.Split(':');
+                string result = parts.Length > 1 ? parts[1].Trim('\"') : string.Empty;
+                ColumnModel columnModel = new ColumnModel(result, i, new List<TaskModel>(), this);
                 columnModels.Add(columnModel);
                 foreach (IntroSE.Kanban.Backend.ServiceLayer.TaskSL t in columns)
                 {
