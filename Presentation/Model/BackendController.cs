@@ -14,14 +14,22 @@ namespace Presentation.Model
     public class BackendController
     {
         private GradingService Service { get; set; }
-        public BackendController(GradingService service)
+        private static BackendController b;
+        public static BackendController getInstante(GradingService service)
+        {
+            if(b==null)
+                b=new BackendController(service,true);
+            return b;
+        }
+        private BackendController(GradingService service,Boolean b)
         {
             this.Service = service;
         }
-
-        public BackendController()
+        public static BackendController getInstante()
         {
-            this.Service = new GradingService();
+            if (b == null)
+                b = new BackendController(new GradingService(), true);
+            return b;
             //Service.LoadData();
         }
         /// <summary>

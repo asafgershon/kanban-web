@@ -49,7 +49,7 @@ namespace Presentation.ViewModel
 
         public LoginViewModel()
         {
-            this.Controller = new Model.BackendController();
+            this.Controller = Model.BackendController.getInstante();
             this.Email = Email;
             this.Password = Password;
         }
