@@ -102,10 +102,10 @@ namespace Presentation.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click_NewColumn(object sender, RoutedEventArgs e)
+        private void Button_Click_assigntask(object sender, RoutedEventArgs e)
         {
-            NewColumn newColumn = new NewColumn(viewModel.Controller, viewModel.boardModel, viewModel.userModel, this);
-            newColumn.Show();
+            //NewColumn newColumn = new NewColumn(viewModel.Controller, viewModel.boardModel, viewModel.userModel, this);
+            //newColumn.Show();
         }
 
         /// <summary>
@@ -156,8 +156,8 @@ namespace Presentation.View
         /// <param name="e"></param>
         private void Rename_Click(object sender, RoutedEventArgs e)
         {
-            RenameColumnWindow renameColumnWindow = new RenameColumnWindow(viewModel.GetColumnByName(ColumnCB.Text), viewModel.userModel, viewModel.boardModel, this, viewModel.Controller);
-            renameColumnWindow.Show();
+            //RenameColumnWindow renameColumnWindow = new RenameColumnWindow(viewModel.GetColumnByName(ColumnCB.Text), viewModel.userModel, viewModel.boardModel, this, viewModel.Controller);
+            //renameColumnWindow.Show();
         }
 
         /// <summary>
