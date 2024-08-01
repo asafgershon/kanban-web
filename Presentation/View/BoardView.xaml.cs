@@ -159,55 +159,5 @@ namespace Presentation.View
             //RenameColumnWindow renameColumnWindow = new RenameColumnWindow(viewModel.GetColumnByName(ColumnCB.Text), viewModel.userModel, viewModel.boardModel, this, viewModel.Controller);
             //renameColumnWindow.Show();
         }
-
-        /// <summary>
-        /// sort the tasks button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Sort_Click(object sender, RoutedEventArgs e)
-        {
-            /* :) */
-            
-            if (viewModel.SelectedColumn != null && viewModel.SelectedColumn.Count != 0)
-            {
-                List<Model.TaskModel> taskModels = new List<Model.TaskModel>();
-                Model.TaskModel closestTask = viewModel.SelectedColumn[0];
-                for (int i = 0; viewModel.SelectedColumn.Count != 0; i++)
-                {
-                    closestTask = viewModel.SelectedColumn[0];
-                    foreach (Model.TaskModel t in viewModel.SelectedColumn)
-                    {
-                        if (t.DueDate < closestTask.DueDate) closestTask = t;
-                    }
-                    taskModels.Add(closestTask);
-                    viewModel.SelectedColumn.Remove(closestTask);
-                }
-                foreach (Model.TaskModel t in taskModels)
-                {
-                    viewModel.SelectedColumn.Add(t);
-                }
-                viewModel.SelectedColumn = viewModel.SelectedColumn;
-            }
-        }
-
-        /// <summary>
-        /// filter button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Filter_Click(object sender, RoutedEventArgs e)
-        {
-            if (viewModel.SelectedColumn != null && viewModel.SelectedColumn.Count != 0)
-            {
-                List<Model.TaskModel> filteredTasks = new List<Model.TaskModel>();
-                    foreach  (Model.TaskModel t in viewModel.SelectedColumn)
-                    {
-                        if (t.Title.Contains(viewModel.Filter) || t.Description.Contains(viewModel.Filter) || t.EmailAssignee.Contains(viewModel.Filter)) filteredTasks.Add(t);
-                    }
-                    FilterWindow filterWindow = new FilterWindow(viewModel.Controller, viewModel.userModel, filteredTasks);
-                    filterWindow.Show();
-            }
-        }
     }
 }
