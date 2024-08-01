@@ -21,6 +21,7 @@ namespace Presentation.View
     {
         
         public ViewModel.BoardMenuModel viewModel;
+
         public BoardMenu(Model.UserModel u,Model.BackendController controller)
         {
             InitializeComponent();

@@ -59,6 +59,24 @@ namespace IntroSE.Kanban.Backend.ServiceLayer
             }
         }
 
+        public IList<BoardSL> GetAllBoards()
+        {
+            try
+            {
+                IList<BoardBL> boards = bf.allboard();
+                IList<BoardSL> boardSLs = new List<BoardSL>();
+                foreach (BoardBL board in boards)
+                {
+                    boardSLs.Add(new BoardSL(board.BoardName, board.Owner, board.boardId, board.memebrs));
+                }
+                return boardSLs;
+            }
+            catch (Exception e)
+            {
+                return new List<BoardSL>();
+            }
+        }
+
         /// <summary>
         /// This method deletes a board.
         /// </summary>

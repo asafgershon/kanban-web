@@ -766,5 +766,15 @@ namespace Kanban_2024_2024_24.Backend.BusinessLayer.TaskAndBoard
             }
             return boards1;
         }
+
+        internal IList<BoardBL> allboard()
+        {
+            IList<BoardBL> boards1 = new List<BoardBL>();
+            foreach (BoardBL board in boards.Values)
+            {
+                boards1.Add(board);
+            }
+            return boards1;
+        }
     }
 }

@@ -1,8 +1,5 @@
-﻿using Presentation.Model;
-using Presentation.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,34 +15,26 @@ using System.Windows.Shapes;
 namespace Presentation.View
 {
     /// <summary>
-    /// Interaction logic for JoinBoardView.xaml
+    /// Interaction logic for JoinBoardWindow.xaml
     /// </summary>
     public partial class JoinBoardWindow : Window
     {
+
         ViewModel.JoinBoardViewModel viewModel;
-        private ObservableCollection<BoardModel> allBoards;
-
-
-        public JoinBoardView(UserModel u, ObservableCollection<BoardModel> allBoards)
-        {
-            this.viewModel = new JoinBoardViewModel(u);
-            this.DataContext = viewModel;
-            this.allBoards = allBoards;
-            InitializeComponent();
-        }
-        public JoinBoardView()
+        public JoinBoardWindow(Model.UserModel user, View.BoardMenu boardMenu, Model.BackendController Controller)
         {
             InitializeComponent();
+            this.DataContext = new ViewModel.JoinBoardViewModel(user, boardMenu, Controller);
+            this.viewModel = (ViewModel.JoinBoardViewModel)DataContext;
         }
 
-        private void BackToBoards_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// join the board by click it
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
-        }
-
-        private void Join_Click(object sender, RoutedEventArgs e)
-        {
-
             var item = ((ListViewItem)sender).Content as Model.BoardModel;
             if (item != null)
             {

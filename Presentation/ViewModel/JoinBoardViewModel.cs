@@ -38,17 +38,18 @@ namespace Presentation.ViewModel
             this.userModel = user;
             this.Controller = Controller;
             this.boardMenu = boardMenu;
+            GetAllBoards();
         }
 
 
         /// <summary>
         /// get all the boards
         /// </summary>
-        public void GetAllBoards(string email)
+        public void GetAllBoards()
         {
             try
             {
-                Boards = Controller.GetAllBoards(email);
+                Boards = Controller.GetAllBoards();
             }
             catch { }
         }

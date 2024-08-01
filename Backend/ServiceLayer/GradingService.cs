@@ -336,6 +336,11 @@ namespace IntroSE.Kanban.Backend.ServiceLayer
             return sf.bs.GetAllBoards(email);
         }
 
+        public IList<BoardSL> GetAllBoards()
+        {
+            return sf.bs.GetAllBoards();
+        }
+
         ///<summary>This method loads all persisted data.
         ///<para>
         ///<b>IMPORTANT:</b> When starting the system via the GradingService - do not load the data automatically, only through this method. 
