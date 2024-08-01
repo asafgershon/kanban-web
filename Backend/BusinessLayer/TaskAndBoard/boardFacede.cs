@@ -749,5 +749,22 @@ namespace Kanban_2024_2024_24.Backend.BusinessLayer.TaskAndBoard
 
             }
         }
+
+        internal IList<BoardBL> allboard(string email)
+        {
+            IList<BoardBL> boards1 = new List<BoardBL>();
+            foreach (BoardBL board in boards.Values)
+            {
+                if(board.Owner.Contains(email) || board.memebrs.Contains(email))
+                {
+
+                }
+                else
+                {
+                    boards1.Add(board);
+                }
+            }
+            return boards1;
+        }
     }
 }

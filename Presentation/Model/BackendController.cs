@@ -192,6 +192,24 @@ namespace Presentation.Model
             return columnModels;
         }
 
+        public IList<BoardModel> GetAllBoards(string email)
+        {
+            IList<IntroSE.Kanban.Backend.ServiceLayer.BoardSL> res = Service.GetAllBoards(email);
+            if (res.Count == 0)
+            {
+                throw new Exception("no board to join");
+            }
+            else
+            {
+                List<BoardModel> boardModels = new List<BoardModel>();
+                foreach (IntroSE.Kanban.Backend.ServiceLayer.BoardSL board in res)
+                {
+                    boardModels.Add(new BoardModel(this, board));
+                }
+                return boardModels;
+            }
+        }
+
         /// <summary>
         /// change the task's title
         /// </summary>

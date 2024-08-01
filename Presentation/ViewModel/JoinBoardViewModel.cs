@@ -40,13 +40,25 @@ namespace Presentation.ViewModel
             this.boardMenu = boardMenu;
         }
 
+
+        /// <summary>
+        /// get all the boards
+        /// </summary>
+        public void GetAllBoards(string email)
+        {
+            try
+            {
+                Boards = Controller.GetAllBoards(email);
+            }
+            catch { }
+        }
+
         /// <summary>
         /// join the board
         /// </summary>
         /// <param name="userEmail">user's email</param>
         /// <param name="creatorEmail">creator's email</param>
         /// <param name="boardName">board's name</param>
-
         public void JoinBoard(String userEmail, int boardid)
         {
             Controller.JoinBoard(userEmail, boardid);

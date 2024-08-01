@@ -40,7 +40,7 @@ namespace Presentation.View
                 Action ConfirmJoinBoard = () =>
                 {
                     viewModel.JoinBoard(viewModel.userModel.Email, item.ID);
-                }; 
+                };
                 ConfirmWindow confirmWindow = new ConfirmWindow(viewModel.Controller, ConfirmJoinBoard);
                 confirmWindow.Show();
             }

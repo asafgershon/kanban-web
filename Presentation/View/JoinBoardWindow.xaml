@@ -6,27 +6,27 @@
         xmlns:local="clr-namespace:Presentation.View"
         mc:Ignorable="d"
         Title="JoinBoardWindow" Height="320" Width="370">
-    <Grid Background="#FFF7F7F7">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="200"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-            <Label Content="Join Board" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="22" />
-        <Grid Grid.Row="1">
-            <ListView ItemsSource="{Binding Boards}" FontSize="14" Width="350">
-                <ListView.View>
-                    <GridView AllowsColumnReorder="True">
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Board Name" Width="180" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=AdminEmail}" Header="Creator" Width="150" />
-                    </GridView>
-                </ListView.View>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
-                    </Style>
-                </ListView.ItemContainerStyle>
-            </ListView>
-        </Grid>
-    </Grid>
+	<Grid Background="#FFF7F7F7">
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="200"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Label Content="Join Board" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="22" />
+		<Grid Grid.Row="1">
+			<ListView ItemsSource="{Binding Boards}" FontSize="14" Width="350">
+				<ListView.View>
+					<GridView AllowsColumnReorder="True">
+						<GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Board Name" Width="180" />
+						<GridViewColumn DisplayMemberBinding="{Binding Path=AdminEmail}" Header="Creator" Width="150" />
+					</GridView>
+				</ListView.View>
+				<ListView.ItemContainerStyle>
+					<Style TargetType="ListViewItem">
+						<EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+					</Style>
+				</ListView.ItemContainerStyle>
+			</ListView>
+		</Grid>
+	</Grid>
 </Window>
