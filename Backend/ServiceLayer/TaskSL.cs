@@ -12,26 +12,26 @@ namespace IntroSE.Kanban.Backend.ServiceLayer
 {
     public class TaskSL
     {
-        public int TaskId { get; private set; }
-        public DateTime Time { get; private set; }
-        public DateTime DueDate { get; private set; }
+        public int TaskId { get; set; }
+        public DateTime Time { get; set; }
+        public DateTime DueDate { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
-        public int? ColumnOrdinal { get; private set; }
+        public int? ColumnOrdinal { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? assign { get; set; }
 
         //constructor
-        public TaskSL(int TaskId, DateTime time, DateTime dueDate, string title, string description, int columnOrdinal)
+        public TaskSL(int TaskId, DateTime Time, DateTime DueDate, string Title, string Description, int ColumnOrdinal)
         {
             this.TaskId = TaskId;
-            this.Time = time;
-            this.DueDate = dueDate;
-            this.Title = title;
-            this.Description = description;
-            this.ColumnOrdinal = columnOrdinal;
+            this.Time = Time;
+            this.DueDate = DueDate;
+            this.Title = Title;
+            this.Description = Description;
+            this.ColumnOrdinal = ColumnOrdinal;
             this.assign = null;
         }
+        public TaskSL() { }
     }
 }

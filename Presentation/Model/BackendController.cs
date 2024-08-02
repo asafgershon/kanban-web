@@ -176,7 +176,14 @@ namespace Presentation.Model
             List<ColumnModel> columnModels = new List<ColumnModel>();
             for (int i = 0; i < 3; i++)
             {
-                List<TaskSL> columns = JsonSerializer.Deserialize<Response>(Service.GetColumn(userEmail, boardName, i))?.ReturnValue as List<TaskSL> ?? new List<TaskSL>();
+                string jsonData = Service.GetColumn(userEmail, boardName, i);
+                Response response = JsonSerializer.Deserialize<Response>(jsonData);
+
+                List<TaskSL> columns = new List<TaskSL>();
+                if (response?.ReturnValue is JsonElement jsonElement && jsonElement.ValueKind == JsonValueKind.Array)
+                {
+                    columns = JsonSerializer.Deserialize<List<TaskSL>>(jsonElement.GetRawText()) ?? new List<TaskSL>();
+                }
                 string colname = Service.GetColumnName(userEmail, boardName, i);
                 colname = colname.Trim('{', '}');
                 string[] parts = colname.Split(':');

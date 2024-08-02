@@ -164,6 +164,7 @@ namespace Presentation.View
             //RenameColumnWindow renameColumnWindow = new RenameColumnWindow(viewModel.GetColumnByName(ColumnCB.Text), viewModel.userModel, viewModel.boardModel, this, viewModel.Controller);
             //renameColumnWindow.Show();
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// sort the tasks button
@@ -205,5 +206,7 @@ namespace Presentation.View
         {
             //
         }
+=======
+>>>>>>> f2588f33154a097350c8f1e0a6024c5ea0acb852
     }
 }
