@@ -382,5 +382,19 @@ namespace IntroSE.Kanban.Backend.ServiceLayer
             }
         }
 
+        public IList<string> GetBoardMembers(string email, string boardName)
+        {
+            try
+            {
+                IList<string> members = bf.GetBoardMembers(email, boardName);
+                return members;
+            }
+            catch (Exception e)
+            {
+                IList<string> members = new List<string>();
+                return members;
+            }
+        }
+
     }
 }

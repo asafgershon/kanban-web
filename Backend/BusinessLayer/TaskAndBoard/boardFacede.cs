@@ -776,5 +776,13 @@ namespace Kanban_2024_2024_24.Backend.BusinessLayer.TaskAndBoard
             }
             return boards1;
         }
+
+        internal IList<string> GetBoardMembers(string email, string boardName)
+        {
+            IList<string> members = new List<string>();
+            BoardBL board = GetBoardByName(email, boardName);
+            members = board.memebrs;
+            return members;
+        }
     }
 }

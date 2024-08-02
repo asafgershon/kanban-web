@@ -34,7 +34,7 @@
 		<Button Name="Display" Content="Display Board"  Height="45" Width="133" Click="Display_Click" Grid.Row="4" FontSize="14"/>
 		<Button Name="Delete" Content="Delete Board" Height="45" Width="133" Grid.Row="5" FontSize="14" Click="Delete_Click"/>
 		<Button Name="leaveBoard" Content="leave Board" Height="45" Width="132" Grid.Row="4" Grid.Column="1" FontSize="14" Click="JoinBoard_Click"/>
-		<Button Name="transferowner" Content="transfer owner ship" Height="45" Width="132" Grid.Row="5" Grid.Column="1" FontSize="14" Click="JoinBoard_Click"/>
+		<Button Name="transferowner" Content="transfer owner ship" Height="45" Width="132" Grid.Row="5" Grid.Column="1" FontSize="14" Click="LeaveBoard_Click"/>
 		<Button Name="Create" Content="Create Board" Height="45" Width="132" Click="Create_Click" Grid.Row="4" Grid.Column="3" FontSize="14"/>
         <Button Name="InProgress" Content="Get In Progress Tasks"  Height="45" Width="133" Click="InProgressTasks_Click" Grid.Row="5" Grid.Column="4" FontSize="14"/>
         <Button Name="JoinBoard" Content="Join Board" Height="45" Width="132" Grid.Row="5" Grid.Column="3" FontSize="14" Click="JoinBoard_Click"/>

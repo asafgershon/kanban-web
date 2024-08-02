@@ -229,6 +229,18 @@ namespace Presentation.Model
         }
 
         /// <summary>
+        /// get the board's members' list
+        /// </summary>
+        /// <param name="userEmail">user's email</param>
+        /// <param name="boardName">board's name</param>
+        /// <param name="creatorEmail">board's creator's email</param>
+        /// <returns></returns>
+        public IList<string> GetBoardMembers(string email, string boardName)
+        {
+            return Service.GetBoardMembers(email, boardName);
+        }
+
+        /// <summary>
         /// change the task's title
         /// </summary>
         /// <param name="userEmail">user's email</param>
@@ -301,6 +313,19 @@ namespace Presentation.Model
         public void JoinBoard(string userEmail, int boardid)
         {
             Response res = JsonSerializer.Deserialize<Response>(Service.JoinBoard(userEmail, boardid));
+            if (res.isError)
+                throw new Exception(res.ErrorMessage);
+        }
+
+        /// <summary>
+        /// join board from diffrent user
+        /// </summary>
+        /// <param name="userEmail">user's email</param>
+        /// <param name="creatorEmail">board's creator email</param>
+        /// <param name="boardName">board's name</param>
+        public void LeaveBoard(string userEmail, int boardid)
+        {
+            Response res = JsonSerializer.Deserialize<Response>(Service.LeaveBoard(userEmail, boardid));
             if (res.isError)
                 throw new Exception(res.ErrorMessage);
         }

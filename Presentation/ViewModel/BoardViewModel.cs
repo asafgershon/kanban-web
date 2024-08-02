@@ -65,9 +65,11 @@ namespace Presentation.ViewModel
             this.userModel = userModel;
             this.boardModel = boardModel;
             this.columnModels = columnModels;
-            _boardName = boardModel.Name;            
+            _boardName = boardModel.Name;
+            _boardMembers = Controller.GetBoardMembers(userModel.Email, boardModel.Name);
+
         }
-        
+
         /// <summary>
         /// move column to new position
         /// </summary>

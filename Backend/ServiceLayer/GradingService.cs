@@ -246,6 +246,11 @@ namespace IntroSE.Kanban.Backend.ServiceLayer
             return sf.bs.DeleteBoard(email, name);
         }
 
+        public IList<string> GetBoardMembers(string email, string boardName)
+        {
+            return sf.bs.GetBoardMembers(email, boardName);
+        }
+
         /// <summary>
         /// This method returns all in-progress tasks of a user.
         /// </summary>

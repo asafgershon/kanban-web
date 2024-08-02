@@ -85,6 +85,11 @@ namespace Presentation.View
             }
         }
 
+        private void RemoveColumn_Click()
+        {
+            //
+        }
+
         /// <summary>
         /// return to the board's menu button
         /// </summary>
@@ -198,16 +203,7 @@ namespace Presentation.View
         /// <param name="e"></param>
         private void Filter_Click(object sender, RoutedEventArgs e)
         {
-            if (viewModel.SelectedColumn != null && viewModel.SelectedColumn.Count != 0)
-            {
-                List<Model.TaskModel> filteredTasks = new List<Model.TaskModel>();
-                    foreach  (Model.TaskModel t in viewModel.SelectedColumn)
-                    {
-                        if (t.Title.Contains(viewModel.Filter) || t.Description.Contains(viewModel.Filter) || t.EmailAssignee.Contains(viewModel.Filter)) filteredTasks.Add(t);
-                    }
-                    FilterWindow filterWindow = new FilterWindow(viewModel.Controller, viewModel.userModel, filteredTasks);
-                    filterWindow.Show();
-            }
+            //
         }
     }
 }

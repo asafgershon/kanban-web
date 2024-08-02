@@ -108,6 +108,17 @@ namespace Presentation.View
         }
 
         /// <summary>
+        /// join board button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LeaveBoard_Click(object sender, RoutedEventArgs e)
+        {
+            LeaveboardWindow leaveBoeardWindow = new LeaveboardWindow(viewModel.user, this, viewModel.Controller);
+            leaveBoeardWindow.Show();
+        }
+
+        /// <summary>
         /// show in progress tasks button
         /// </summary>
         /// <param name="sender"></param>
