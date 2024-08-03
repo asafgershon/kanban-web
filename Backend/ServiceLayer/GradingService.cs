@@ -152,7 +152,7 @@ namespace IntroSE.Kanban.Backend.ServiceLayer
         /// <param name="description">Description of the new task</param>
         /// <param name="dueDate">The due date if the new task</param>
         /// <returns>An empty response, unless an error occurs (see <see cref="GradingService"/>)</returns>
-        public string AddTask(string email, string boardName, string title, string description, DateTime dueDate)
+        public TaskSL AddTask(string email, string boardName, string title, string description, DateTime dueDate)
         {
             return sf.ts.AddTask(email, boardName, title, description, dueDate);
         }
@@ -256,7 +256,7 @@ namespace IntroSE.Kanban.Backend.ServiceLayer
         /// </summary>
         /// <param name="email">Email of the user. Must be logged in</param>
         /// <returns>A response with a list of the in-progress tasks of the user, unless an error occurs (see <see cref="GradingService"/>)</returns>
-        public string InProgressTasks(string email)
+        public List<TaskSL> InProgressTasks(string email)
         {
             return sf.bs.InProgressTasks(email);
         }

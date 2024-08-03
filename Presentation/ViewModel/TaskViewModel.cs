@@ -61,7 +61,7 @@ namespace Presentation.ViewModel
             set
             {
                 this._dueDate = value;
-                RaisePropertyChanged("DueDate");
+                //RaisePropertyChanged("DueDate");
             }
         }
 

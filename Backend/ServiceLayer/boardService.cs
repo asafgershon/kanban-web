@@ -104,7 +104,7 @@ namespace IntroSE.Kanban.Backend.ServiceLayer
         /// </summary>
         /// <param name="email">Email of the user. Must be logged in</param>
         /// <returns>A response with a list of the in-progress tasks of the user, unless an error occurs (see <see cref="GradingService"/>)</returns>
-        public string InProgressTasks(string email)
+        public List<TaskSL> InProgressTasks(string email)
         {
             try
             {
@@ -115,13 +115,16 @@ namespace IntroSE.Kanban.Backend.ServiceLayer
                     TaskSL t1 = new TaskSL(task.TaskId, task.Time, task.DueDate, task.Title, task.Description, task.ColumnOrdinal);
                     returnvalue.Add(t1);
                 }
-                Response response = new Response(null, returnvalue);
-                return JsonSerializer.Serialize(response);
+                //Response response = new Response(null, returnvalue);
+                //return JsonSerializer.Serialize(response);
+                return returnvalue;
+
             }
             catch (Exception ex)
             {
-                Response response = new Response(ex.Message);
-                return JsonSerializer.Serialize(response);
+                //Response response = new Response(ex.Message);
+                //return JsonSerializer.Serialize(response);
+                return new List<TaskSL>();
             }
         }
 

@@ -152,10 +152,17 @@ namespace Kanban_2024_2024_24.Backend.BusinessLayer.TaskAndBoard
         {
             if (col[BACKLOG_INDEX].GetLimit() == -1 || col[BACKLOG_INDEX].GetLimit() > col[BACKLOG_INDEX].GetTasks().Count)
             {
-                // Implement logic to add a task to the board
-                TaskBL newTask = new TaskBL(title, nextTaskId, description, dueDate);
-                nextTaskId++;
-                return newTask;
+                if (DateTime.Compare(dueDate, DateTime.Now) > 0)
+                {
+                    // Implement logic to add a task to the board
+                    TaskBL newTask = new TaskBL(title, nextTaskId, description, dueDate);
+                    nextTaskId++;
+                    return newTask;
+                }
+                else
+                {
+                    throw new ArgumentException("invalid due date");
+                }
             }
             else
             {
@@ -261,10 +268,13 @@ namespace Kanban_2024_2024_24.Backend.BusinessLayer.TaskAndBoard
             colOrdinalValidation(columnOrdinal);
             // Implement logic to update task due date
             TaskBL task = GetTaskById(columnOrdinal, taskId);
-            if (task != null && (task.Assign == email || task.Assign == null) || DateTime.Compare(dueDate, task.Time) < 0)
+            if (task != null && (task.Assign == email || task.Assign == null))
             {
-                task.dao.DueDate = dueDate;
-                task.UpdateTaskDueDate(dueDate);
+                if (DateTime.Compare(dueDate, task.Time) > 0)
+                {
+                    task.dao.DueDate = dueDate;
+                    task.UpdateTaskDueDate(dueDate);
+                }
             }
             else
                 throw new ArgumentException("task does not exist");

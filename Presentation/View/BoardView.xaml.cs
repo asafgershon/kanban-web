@@ -129,21 +129,6 @@ namespace Presentation.View
         }
 
         /// <summary>
-        /// move column button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MoveColumn_Click(object sender, RoutedEventArgs e)
-        {
-            if (viewModel.SelectedColumn != null)
-            {
-                MoveColumn moveColumn = new MoveColumn(viewModel.Controller, viewModel.userModel, viewModel.boardModel, viewModel.GetColumnByName(ColumnCB.Text));
-                moveColumn.Show();
-            }
-
-        }
-
-        /// <summary>
         /// limit cloumn button
         /// </summary>
         /// <param name="sender"></param>
@@ -154,59 +139,11 @@ namespace Presentation.View
             limitWindow.Show();
         }
 
-        /// <summary>
-        /// rename column button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Rename_Click(object sender, RoutedEventArgs e)
+        public void RefreshBoardView()
         {
-            //RenameColumnWindow renameColumnWindow = new RenameColumnWindow(viewModel.GetColumnByName(ColumnCB.Text), viewModel.userModel, viewModel.boardModel, this, viewModel.Controller);
-            //renameColumnWindow.Show();
+            // Clear and reinitialize components, or reload data
+            InitializeComponent();
+            this.viewModel = (ViewModel.BoardViewModel)DataContext;
         }
-<<<<<<< HEAD
-
-        /// <summary>
-        /// sort the tasks button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Sort_Click(object sender, RoutedEventArgs e)
-        {
-            /* :) */
-            
-            if (viewModel.SelectedColumn != null && viewModel.SelectedColumn.Count != 0)
-            {
-                List<Model.TaskModel> taskModels = new List<Model.TaskModel>();
-                Model.TaskModel closestTask = viewModel.SelectedColumn[0];
-                for (int i = 0; viewModel.SelectedColumn.Count != 0; i++)
-                {
-                    closestTask = viewModel.SelectedColumn[0];
-                    foreach (Model.TaskModel t in viewModel.SelectedColumn)
-                    {
-                        if (t.DueDate < closestTask.DueDate) closestTask = t;
-                    }
-                    taskModels.Add(closestTask);
-                    viewModel.SelectedColumn.Remove(closestTask);
-                }
-                foreach (Model.TaskModel t in taskModels)
-                {
-                    viewModel.SelectedColumn.Add(t);
-                }
-                viewModel.SelectedColumn = viewModel.SelectedColumn;
-            }
-        }
-
-        /// <summary>
-        /// filter button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Filter_Click(object sender, RoutedEventArgs e)
-        {
-            //
-        }
-=======
->>>>>>> f2588f33154a097350c8f1e0a6024c5ea0acb852
     }
 }

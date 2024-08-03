@@ -17,7 +17,7 @@
         <Label Content="Limit Column" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="22" />
         <Label Content="for unlimited limit type -1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" Grid.Row="2"/>
         <Label Content="New Column Limit:" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
-        <TextBox Text="" Width="30" Height="30" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,25,0" FontSize="22"/>
+        <TextBox Name="NewColumnLimit" Text="{Binding Path=NewColumnLimit, Mode=TwoWay}" Width="30" Height="30" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,25,0" FontSize="22"/>
         <Label Name="Message" HorizontalContentAlignment="Center" Foreground="Red" HorizontalAlignment="Center" Height="46" Width="200" Grid.Row="2">
             <Label.Content>
                 <AccessText TextWrapping="Wrap" Text="{Binding Path=Message, Mode=OneWay}"/>

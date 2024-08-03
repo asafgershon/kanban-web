@@ -46,7 +46,7 @@ namespace Kanban_2024_2024_24.Backend.BusinessLayer.TaskAndBoard
         /// <param name="description">Description of the new task</param>
         /// <param name="dueDate">The due date if the new task</param>
         /// <returns>A TaskBL that added or error message.</returns>
-        internal void AddTask(string email, string boardName, string title, string description, DateTime dueDate)
+        internal TaskBL AddTask(string email, string boardName, string title, string description, DateTime dueDate)
         {
             log.Info("A user try to add a task");
             uf.IsLoggedIn(email); // Check if user is logged in
@@ -70,6 +70,7 @@ namespace Kanban_2024_2024_24.Backend.BusinessLayer.TaskAndBoard
                 log.Error("can't add task because title exceeds 50 characters");
                 throw new ArgumentException("title exceeds 50 characters.");
             }
+            //if(dueDate < System.)
             BoardBL board = GetBoardByName(email, boardName);
             if (board != null)
             {
@@ -77,6 +78,7 @@ namespace Kanban_2024_2024_24.Backend.BusinessLayer.TaskAndBoard
                 newTask.dao.persist();
                 board.AddTask(newTask);
                 log.Info("Task added successfully");
+                return newTask;
             }
             else
             {
@@ -782,6 +784,7 @@ namespace Kanban_2024_2024_24.Backend.BusinessLayer.TaskAndBoard
             IList<string> members = new List<string>();
             BoardBL board = GetBoardByName(email, boardName);
             members = board.memebrs;
+            members.Add(email);
             return members;
         }
     }

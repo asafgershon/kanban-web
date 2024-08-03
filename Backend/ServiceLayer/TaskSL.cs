@@ -17,7 +17,7 @@ namespace IntroSE.Kanban.Backend.ServiceLayer
         public DateTime DueDate { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
-        public int? ColumnOrdinal { get; set; }
+        public int ColumnOrdinal { get; set; }
 
         public string? assign { get; set; }
 

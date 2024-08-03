@@ -114,8 +114,8 @@ namespace Presentation.View
         /// <param name="e"></param>
         private void LeaveBoard_Click(object sender, RoutedEventArgs e)
         {
-            LeaveboardWindow leaveBoeardWindow = new LeaveboardWindow(viewModel.user, this, viewModel.Controller);
-            leaveBoeardWindow.Show();
+            FilterWindow filter = new FilterWindow(viewModel.user, this, viewModel.Controller);
+            filter.Show();
         }
 
         /// <summary>
@@ -125,8 +125,8 @@ namespace Presentation.View
         /// <param name="e"></param>
         private void InProgressTasks_Click(object sender, RoutedEventArgs e)
         {
-            InProgressTasksWindow inProgressTasksWindow = new InProgressTasksWindow(/*viewModel.InProgressTasks(),*/ viewModel.Controller, viewModel.user);
-            inProgressTasksWindow.Show();
+            InProgressTasksWindow transfer = new InProgressTasksWindow(viewModel.InProgressTasks(), viewModel.Controller, viewModel.user);
+            transfer.Show();
         }
 
         /// <summary>

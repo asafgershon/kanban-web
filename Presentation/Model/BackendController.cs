@@ -17,11 +17,11 @@ namespace Presentation.Model
         private static BackendController b;
         public static BackendController getInstante(GradingService service)
         {
-            if(b==null)
-                b=new BackendController(service,true);
+            if (b == null)
+                b = new BackendController(service, true);
             return b;
         }
-        private BackendController(GradingService service,Boolean b)
+        private BackendController(GradingService service, Boolean b)
         {
             this.Service = service;
         }
@@ -111,15 +111,14 @@ namespace Presentation.Model
         /// <returns></returns>
         public Model.TaskModel AddTask(string userEmail, string creatorEmail, string boardName, string title, string description, DateTime dueDate)
         {
-            Response res = JsonSerializer.Deserialize<Response>(Service.AddTask(userEmail, boardName, title, description, dueDate));
-            if (res.isError)
+            TaskSL res = (Service.AddTask(userEmail, boardName, title, description, dueDate));
+            if (res == null)
             {
-                throw new Exception(res.ErrorMessage);
+                throw new Exception("you enter invalid input");
             }
             else
             {
-                return null;
-                //return new Model.TaskModel(res.ReturnValue.Title, res.ReturnValue.Description, res.ReturnValue.DueDate, res.ReturnValue.CreationTime, res.ReturnValue.emailAssignee, res.ReturnValue.ID, res.ReturnValue.Position, this, userEmail);
+                return new Model.TaskModel(res.Title, res.Description, res.DueDate, res.Time, res.assign, res.TaskId, res.ColumnOrdinal, this, userEmail);
             }
         }
 
@@ -157,9 +156,10 @@ namespace Presentation.Model
         /// <param name="boardName">board's name</param>
         /// <param name="columnOrdinal">column's position</param>
         /// <param name="shiftSize">new column's position</param>
+
         public void MoveColumn(string userEmail, string creatorEmail, string boardName, int columnOrdinal, int shiftSize)
         {
-            Response res = JsonSerializer.Deserialize<Response>(Service.AdvanceTask(userEmail, boardName, columnOrdinal, shiftSize));
+            Response res = JsonSerializer.Deserialize<Response>(Service.TransferOwnership(creatorEmail, userEmail, boardName));
             if (res.isError)
                 throw new Exception(res.ErrorMessage);
         }
@@ -337,6 +337,13 @@ namespace Presentation.Model
                 throw new Exception(res.ErrorMessage);
         }
 
+        public void loadData()
+        {
+            Response res = JsonSerializer.Deserialize<Response>(Service.LoadData());
+            if (res.isError)
+                throw new Exception(res.ErrorMessage);
+        }
+
         /// <summary>
         /// move the task to the next column
         /// </summary>
@@ -374,19 +381,13 @@ namespace Presentation.Model
         /// <returns></returns>
         public IList<Model.TaskModel> InProgressTasks(string userEmail)
         {
-            Response res = JsonSerializer.Deserialize<Response>(Service.InProgressTasks(userEmail));
-            if (res.isError)
-                throw new Exception(res.ErrorMessage);
-            else
+            List<TaskSL> res = (Service.InProgressTasks(userEmail));
+            List<TaskModel> inProgressTasks = new List<TaskModel>();
+            foreach (var t in res)
             {
-                //var taskList = res.ReturnValue;
-                List<TaskModel> inProgressTasks = new List<TaskModel>();
-                //foreach (var t in taskList)
-                //{
-                //  inProgressTasks.Add(new TaskModel(t.Title, t.Description, t.DueDate, t.CreationTime, t.emailAssignee, t.ID, t.Position, this, userEmail));
-                //}
-                return inProgressTasks;
+                inProgressTasks.Add(new TaskModel(t.Title, t.Description, t.DueDate, t.Time, t.assign, t.TaskId, t.ColumnOrdinal, this, userEmail));
             }
+            return inProgressTasks;
         }
     }
 }

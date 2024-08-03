@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Presentation.ViewModel
 {
-    class LeaveBoardViewModel : NotifiableObject
+    class FilterViewModel : NotifiableObject
     {
         public Model.BackendController Controller;
         public Model.UserModel userModel;
@@ -33,7 +33,7 @@ namespace Presentation.ViewModel
             }
         }
 
-        public LeaveBoardViewModel(Model.UserModel user, View.BoardMenu boardMenu, Model.BackendController Controller)
+        public FilterViewModel(Model.UserModel user, View.BoardMenu boardMenu, Model.BackendController Controller)
         {
             this.userModel = user;
             this.Controller = Controller;
@@ -60,9 +60,18 @@ namespace Presentation.ViewModel
         /// <param name="userEmail">user's email</param>
         /// <param name="creatorEmail">creator's email</param>
         /// <param name="boardName">board's name</param>
-        public void JoinBoard(String userEmail, int boardid)
+        public void LeaveBoard(String userEmail, int boardid)
         {
-            Controller.JoinBoard(userEmail, boardid);
+            Controller.LeaveBoard(userEmail, boardid);
+            IList<Model.BoardModel> updatedBoards = Controller.GetUserBoards(userModel);
+            Dictionary<String, Model.BoardModel> userBoards = new Dictionary<String, Model.BoardModel>();
+            boardMenu.BoardCB.Items.Clear();
+            foreach (Model.BoardModel boardModel in updatedBoards)
+            {
+                userBoards.Add(boardModel.Name, boardModel);
+                boardMenu.BoardCB.Items.Add(boardModel.Name);
+            }
+            boardMenu.viewModel.UserBoards = userBoards;
         }
     }
 }

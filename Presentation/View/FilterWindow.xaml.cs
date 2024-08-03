@@ -17,15 +17,16 @@ namespace Presentation.View
     /// <summary>
     /// Interaction logic for FilterWindow.xaml
     /// </summary>
-    public partial class LeaveboardWindow : Window
+    public partial class FilterWindow : Window
     {
-        ViewModel.LeaveBoardViewModel viewModel;
-        public LeaveboardWindow(Model.UserModel user, View.BoardMenu boardMenu, Model.BackendController Controller)
+        ViewModel.FilterViewModel viewModel;
+        public FilterWindow(Model.UserModel user, View.BoardMenu boardMenu, Model.BackendController Controller)
         {
             InitializeComponent();
-            this.DataContext = new ViewModel.LeaveBoardViewModel(user, boardMenu, Controller);
-            this.viewModel = (ViewModel.LeaveBoardViewModel)DataContext;
+            this.DataContext = new ViewModel.FilterViewModel(user, boardMenu, Controller);
+            this.viewModel = (ViewModel.FilterViewModel)DataContext;
         }
+
 
         /// <summary>
         /// join the board by click it
@@ -39,7 +40,7 @@ namespace Presentation.View
             {
                 Action ConfirmJoinBoard = () =>
                 {
-                    viewModel.JoinBoard(viewModel.userModel.Email, item.ID);
+                    viewModel.LeaveBoard(viewModel.userModel.Email, item.ID);
                 };
                 ConfirmWindow confirmWindow = new ConfirmWindow(viewModel.Controller, ConfirmJoinBoard);
                 confirmWindow.Show();

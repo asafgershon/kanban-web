@@ -63,6 +63,15 @@ namespace Presentation.ViewModel
         public void JoinBoard(String userEmail, int boardid)
         {
             Controller.JoinBoard(userEmail, boardid);
+            IList<Model.BoardModel> updatedBoards = Controller.GetUserBoards(userModel);
+            Dictionary<String, Model.BoardModel> userBoards = new Dictionary<String, Model.BoardModel>();
+            boardMenu.BoardCB.Items.Clear();
+            foreach (Model.BoardModel boardModel in updatedBoards)
+            {
+                userBoards.Add(boardModel.Name, boardModel);
+                boardMenu.BoardCB.Items.Add(boardModel.Name);
+            }
+            boardMenu.viewModel.UserBoards = userBoards;
         }
     }
 }

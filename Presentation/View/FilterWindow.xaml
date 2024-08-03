@@ -1,18 +1,18 @@
-﻿<Window x:Class="Presentation.View.LeaveboardWindow"
+﻿<Window x:Class="Presentation.View.FilterWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentation.View"
         mc:Ignorable="d"
-        Title="LeaveboardWindow" Height="320" Width="370">
+        Title="FilterWindow" Height="250" Width="700">
 	<Grid Background="#FFF7F7F7">
 		<Grid.RowDefinitions>
 			<RowDefinition/>
 			<RowDefinition Height="200"/>
 			<RowDefinition/>
 		</Grid.RowDefinitions>
-		<Label Content="Leave Board" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="22" />
+		<Label Content="leave Board" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="22" />
 		<Grid Grid.Row="1">
 			<ListView ItemsSource="{Binding Boards}" FontSize="14" Width="350">
 				<ListView.View>

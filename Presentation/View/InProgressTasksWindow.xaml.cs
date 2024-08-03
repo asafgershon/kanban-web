@@ -20,7 +20,7 @@ namespace Presentation.View
     public partial class InProgressTasksWindow : Window
     {
         ViewModel.InProgressTasksViewModel viewModel;
-        public InProgressTasksWindow(/*IList<Model.TaskModel> tasks,*/ Model.BackendController Controller, Model.UserModel user)
+        public InProgressTasksWindow(IList<Model.TaskModel> tasks, Model.BackendController Controller, Model.UserModel user)
         {
             this.DataContext = new ViewModel.InProgressTasksViewModel(Controller, user);
             this.viewModel = (ViewModel.InProgressTasksViewModel)DataContext;

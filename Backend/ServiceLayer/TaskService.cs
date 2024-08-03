@@ -26,21 +26,13 @@ namespace IntroSE.Kanban.Backend.ServiceLayer
         /// <param name="description">Description of the new task</param>
         /// <param name="dueDate">The due date if the new task</param>
         /// <returns>A JSON string representing the response containing task details or error message.</returns>
-        public string AddTask(string email, string boardName, string title, string description, DateTime dueDate)
+        public TaskSL AddTask(string email, string boardName, string title, string description, DateTime dueDate)
         {
-            try
-            {
                 // Add task using BoardFacade
-                bf.AddTask(email, boardName, title, description, dueDate);
-                Response response = new Response();
-                return JsonSerializer.Serialize(response); // Serialize response to JSON
-            }
-            catch (Exception ex)
-            {
-                // Handle exception and create error response
-                Response response = new Response(ex.Message);
-                return JsonSerializer.Serialize(response); // Serialize response to JSON
-            }
+                TaskBL task = bf.AddTask(email, boardName, title, description, dueDate);
+                //Response response = new Response();
+                //return JsonSerializer.Serialize(response); // Serialize response to JSON
+                return new TaskSL(task.TaskId, task.Time, task.DueDate, title, description, 0);
         }
 
         /// <summary>

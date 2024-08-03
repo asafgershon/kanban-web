@@ -49,6 +49,7 @@ namespace Presentation.ViewModel
             Message = "";
             try
             {
+
                 Controller.LimitColumn(userModel.Email, boardModel.AdminEmail, boardModel.Name, SelectedColumn.Position, NewColumnLimit);
                 return true;
             }

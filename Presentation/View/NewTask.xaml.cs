@@ -25,7 +25,7 @@ namespace Presentation.View
         {
             InitializeComponent();
             this.DataContext = new ViewModel.NewTaskViewModel(controller, board, user, boardView, backlogColumn);
-            this.viewModel = (ViewModel.NewTaskViewModel) DataContext;
+            this.viewModel = (ViewModel.NewTaskViewModel)DataContext;
         }
 
         /// <summary>
@@ -40,6 +40,7 @@ namespace Presentation.View
             {
                 viewModel.backlogColumn.TaskList.Add(t);
                 viewModel.boardView.viewModel.SelectedColumn = viewModel.boardView.viewModel.SelectedColumn;
+                viewModel.boardView.RefreshBoardView();
                 this.Close();
             }
         }
