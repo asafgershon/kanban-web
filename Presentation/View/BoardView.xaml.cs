@@ -128,6 +128,8 @@ namespace Presentation.View
             }
         }
 
+
+
         /// <summary>
         /// limit cloumn button
         /// </summary>
@@ -138,6 +140,12 @@ namespace Presentation.View
             LimitColumnWindow limitWindow = new LimitColumnWindow(viewModel.GetColumnByName(ColumnCB.Text), viewModel.userModel, viewModel.boardModel, viewModel.Controller);
             limitWindow.Show();
         }
+
+        //private void Limit1_Click(object sender, RoutedEventArgs e)
+        //{
+          //  Task2 task = new Task2(viewModel.Controller, item, viewModel.boardModel, viewModel.userModel, viewModel.BoardMembers, viewModel.columnModels);
+            //task.Show();
+        //}
 
         public void RefreshBoardView()
         {

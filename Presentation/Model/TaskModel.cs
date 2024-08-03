@@ -64,6 +64,16 @@ namespace Presentation.Model
                 RaisePropertyChanged("Title");
             }
         }
+        private string _owner;
+        public string Owner
+        {
+            get => _owner;
+            set
+            {
+                _owner = value;
+                RaisePropertyChanged("Owner");
+            }
+        }
         public string DueDateOnly
         {
             get => _dueDate.Date.ToShortDateString();
